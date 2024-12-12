@@ -21,15 +21,10 @@
     </header>
     
     <main>
-      <div class="login-container">
-        <div class="logo-container">
-          <span class="question-mark">?</span>
-          <span class="question-mark">?</span>
-          <span class="question-mark">?</span>
-        </div>
-        <input type="text" placeholder="PSEUDO..." class="input-field">
-        <button class="login-btn">CONNEXION</button>
-      </div>
+        <form class="login-container" method="POST" action="process_login.php">
+            <input type="text" name="pseudo" placeholder="PSEUDO..." class="input-field" required>
+            <button type="submit" name="connexion" class="login-btn">CONNEXION</button>
+        </form>
     </main>
   
     <footer>

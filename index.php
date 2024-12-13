@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute(['pseudo' => $pseudo]);
             $_SESSION['user_id'] = $pdo->lastInsertId();
         }
-        header("Location: ../index.php");
+        header("Location: index.php");
         exit();
     }
 }

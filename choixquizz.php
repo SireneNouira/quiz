@@ -5,7 +5,7 @@ header("Location: pages/login.php");
 exit();
 ?>
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -43,4 +43,4 @@ exit();
       <div class="footer-text">JOUEZ - APPRENEZ - PROGRESSEZ</div>
     </footer>
   </body>
-  </html> -->
+  </html>

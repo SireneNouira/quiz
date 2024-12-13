@@ -1,34 +1,7 @@
 <?php
-// session_start();
-// require_once './utils/connect_db.php';
 
-// if (isset($_GET["id"])) {
-//   $userId = $_GET["id"];
-// } else {
-//   die('ID manquant');
-// }
 
-// $sql = "SELECT * FROM `user` WHERE id = :id";
 
-// try {
-//   $stmt = $pdo->prepare($sql);
-//   $stmt->execute([
-//     ':id' => $userId,
-//   ]);
-
-//   $user = $stmt->fetch(PDO::FETCH_ASSOC); // ou fetch si vous savez que vous n'allez avoir qu'un seul résultat
-
-// } catch (PDOException $error) {
-//   echo "Erreur lors de la requete : " . $error->getMessage();
-// }
-// $sql = 'SELECT * FROM quizze';
-// try {
-//   $stmt = $pdo->prepare($sql);
-//   $stmt->execute();
-//   $quizzes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// } catch (PDOException $error) {
-//   echo "Erreur lors de la requete : " . $error->getMessage();
-// }
 ?>
 
 <!DOCTYPE html>
@@ -68,12 +41,12 @@
 
                 <div class="reponses">
                     <h3>Lorem, ipsum.</h3>
-
                     <h3>Lorem, ipsum.</h3>
                     <h3>Lorem, ipsum.</h3>
                 </div>
 
             </div>
+            <a href="../choixquizz.php" class="login-btn3">REVENIR AU QUIZZ</a>
         </article>
     </main>
 

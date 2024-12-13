@@ -1,8 +1,9 @@
 <?php
+
 session_start();
 require './utils/connect_db.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['connexion'])) {
     $pseudo = trim($_POST['pseudo']);
     if (!empty($pseudo)) {
         $stmt = $pdo->prepare("SELECT id FROM user WHERE pseudo = :pseudo");
@@ -16,10 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute(['pseudo' => $pseudo]);
             $_SESSION['user_id'] = $pdo->lastInsertId();
         }
-        header("Location: ../index.php");
-        exit();
-    }
+
+    } 
+
+    header("Location: choixquizz.php?id={$_SESSION['user_id']}");
 }
+     
 ?>
 
 <!DOCTYPE html>
@@ -49,10 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="logo-container">
        <img src="css/quizzlogo.png" alt="logo" class="logomain">
         </div>
-        <form class="input-field" method="POST" action="">
+     <form class="input-field" method="POST" action="">
         <label for="pseudo" >Pseudo :</label>
         <input type="text" name="pseudo" placeholder="PSEUDO..." class="input-field" id="pseudo" required>
-        <button type="submit" class="login-btn">Se connecter</button>
+       <button type="submit" name='connexion' class="login-btn" >Se connecter</button>
     </form>
         <!-- <input type="text" placeholder="PSEUDO..." class="input-field">
         <div class="divloginbutton">      

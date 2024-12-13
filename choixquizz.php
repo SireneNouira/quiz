@@ -1,11 +1,62 @@
 <?php
+
 session_start();
-session_destroy();
-header("Location: pages/login.php");
-exit();
+require './utils/connect_db.php';
+
+
+
+if (isset($_GET["id"])) {
+  $userId = $_GET["id"];
+} else {
+  die('ID manquant');
+}
+
+$sql = "SELECT * FROM user WHERE id = :id";
+
+try {
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+      ':id' => $userId,
+  ]);
+
+  $user = $stmt->fetch(PDO::FETCH_ASSOC); // ou fetch si vous savez que vous n'allez avoir qu'un seul résultat
+
+} catch (PDOException $error) {
+  echo "Erreur lors de la requete : " . $error->getMessage();
+}
+
+
+$sql = 'SELECT * FROM quizze';
+try {
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+  $quizzes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+} catch (PDOException $error) {
+  echo "Erreur lors de la requete : " . $error->getMessage();
+}
+
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jouer'])) {
+  $userId = intval($_GET["id"]); // ID de l'utilisateur récupéré via l'URL
+  $quizId = intval($_POST['quiz_id']); // ID du quiz sélectionné
+
+  if ($quizId > 0) {
+      // Redirection vers la page du quiz avec les IDs
+      header("Location: ./pages/quiz.php?user_id={$userId}&quiz_id={$quizId}");
+      exit;
+  } else {
+      die('ID du quiz manquant ou invalide.');
+  }
+}
+
 ?>
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +67,7 @@ exit();
 <body>
     <header>
       <div class="logo">
-        <img src="asset/quizzlogo.png" alt="logo">
+        <img src="css/quizzlogo.png" alt="logo">
       </div>
       <nav>
         <ul>
@@ -28,19 +79,41 @@ exit();
     </header>
     
     <main>
-      <div class="login-container">
-        <div class="logo-container">
-       <img src="asset/quizzlogo.png" alt="logo" class="logomain">
-        </div>
-        <input type="text" placeholder="PSEUDO..." class="input-field">
-        <div class="divloginbutton">      
-          <button class="login-btn">CONNEXION</button>
-        </div>  
-      </div>
+
+    <article class="input-field2">
+    <h1>HELLO <?= $user['pseudo'];?> </h1>
+
+
+<div class="flex">
+
+<?php
+foreach ($quizzes as $quiz) {?>
+  <div class="card">
+<img src="./img/iconquizfinal.png" alt="logo-musqiue">
+<h2><?= $quiz['title'];?></h2>
+<p><?= $quiz['description'];?></p>
+<form method="POST">
+                <input type="hidden" name="quiz_id" value="<?= htmlspecialchars($quiz['id']); ?>">
+                <button type="submit" name="jouer">Jouer</button>
+            </form>
+  </div>
+  <?php
+}
+  ?>
+
+</div>
+
+
+<form action="" method="post">
+  <input type="button" value="DECONNEXION"  class="login-btn">
+</form>
+</article>
+
+
     </main>
   
     <footer>
       <div class="footer-text">JOUEZ - APPRENEZ - PROGRESSEZ</div>
     </footer>
   </body>
-  </html> -->
+  </html>

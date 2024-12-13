@@ -1,6 +1,9 @@
 <?php
+
 session_start();
-require_once './utils/connect_db.php';
+require './utils/connect_db.php';
+
+
 
 if (isset($_GET["id"])) {
   $userId = $_GET["id"];
@@ -8,12 +11,12 @@ if (isset($_GET["id"])) {
   die('ID manquant');
 }
 
-$sql = "SELECT * FROM `user` WHERE id = :id";
+$sql = "SELECT * FROM user WHERE id = :id";
 
 try {
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
-    ':id' => $userId,
+      ':id' => $userId,
   ]);
 
   $user = $stmt->fetch(PDO::FETCH_ASSOC); // ou fetch si vous savez que vous n'allez avoir qu'un seul résultat
@@ -21,14 +24,36 @@ try {
 } catch (PDOException $error) {
   echo "Erreur lors de la requete : " . $error->getMessage();
 }
+
+
 $sql = 'SELECT * FROM quizze';
 try {
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
   $quizzes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 } catch (PDOException $error) {
   echo "Erreur lors de la requete : " . $error->getMessage();
 }
+
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jouer'])) {
+  $userId = intval($_GET["id"]); // ID de l'utilisateur récupéré via l'URL
+  $quizId = intval($_POST['quiz_id']); // ID du quiz sélectionné
+
+  if ($quizId > 0) {
+      // Redirection vers la page du quiz avec les IDs
+      header("Location: ./pages/quiz.php?user_id={$userId}&quiz_id={$quizId}");
+      exit;
+  } else {
+      die('ID du quiz manquant ou invalide.');
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +81,7 @@ try {
   </header>
 
   <main>
-    <article class="input-field2 ">
+    <article class="input-field2">
       <h1>HELLO <?= strtoupper($user['pseudo']); ?> </h1>
       <div class="flex">
 
@@ -66,7 +91,10 @@ try {
             <h2><?= $quiz['title']; ?></h2>
             <img src="./img/iconquizfinal.png" alt="logo-musqiue">
             <p><?= $quiz['description']; ?></p>
-            <button type='submit' name='jouer' class="login-btn2">Jouer</button>
+            <form method="POST">
+                <input type="hidden" name="quiz_id" value="<?= htmlspecialchars($quiz['id']); ?>">
+                <button class="login-btn2" type="submit" name="jouer">Jouer</button>
+            </form>
           </div>
         <?php
         }

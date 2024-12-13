@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -193,8 +194,11 @@ font-size: 16px;
   margin-top: 10px;
 }
 
-.login-btn:hover {
+.login-btn:hover,.login-btn3:hover   {
   background-color: #ff7e34;
+}
+.login-btn2:hover   {
+  background-color: #7142ff;
 }
 
 footer {

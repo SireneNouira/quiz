@@ -57,6 +57,7 @@ try {
 $questionId = $question[0]['id'];
 
 
+
 $sql = "SELECT * FROM answer WHERE question_id = :id";
 
 try {
@@ -75,10 +76,10 @@ try {
     echo "Erreur lors de la requête : " . $error->getMessage();
     exit;
 }
-
-
-
-
+foreach ($question as $quest) {
+    var_dump($quest);
+    
+}
 
 ?>
 
@@ -138,6 +139,10 @@ try {
 
 
 </div>
+<div>
+    <p id="question-display">Question ID: <span id="current-id"><?php echo $questionId; ?></span></p>
+    <button id="next-button">Next Question</button>
+</div>
 
 
 </div>
@@ -151,17 +156,6 @@ try {
     </footer>
 
 
-<?php
-$questionData = [
-    'id' => $question[0]['id'],
-    'question_text' => $question[0]['question_text'],
-    'answers' => $answer
-];
-?>
-<script>
-    const quizData = <?php echo json_encode($questionData); ?>;
-</script>
-
-
+ 
 </body>
 </html>

@@ -53,6 +53,7 @@ try {
     exit;
 }
 
+$questionLenght = count($question);
 
 $questionId = $question[0]['id'];
 
@@ -109,8 +110,8 @@ try {
     <main>
         <article class="input-field3">
             <div>
-                <h1>TITRE QUIZ</h1>
-                <h2>1/2</h2>
+                <h1><?= strtoupper($quiz['title']);?></h1>
+                <h2><?= $questionId;?>/<?= $questionLenght;?></h2>
             </div>
           
                 <div id="quiz-container">

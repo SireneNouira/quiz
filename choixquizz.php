@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="asset/style.css">
 </head>
 <body>
     <header>
       <div class="logo">
-        <span class="icon">???</span>
+        <img src="asset/quizzlogo.png" alt="logo">
       </div>
       <nav>
         <ul>
@@ -23,12 +23,12 @@
     <main>
       <div class="login-container">
         <div class="logo-container">
-          <span class="question-mark">?</span>
-          <span class="question-mark">?</span>
-          <span class="question-mark">?</span>
+       <img src="asset/quizzlogo.png" alt="logo" class="logomain">
         </div>
         <input type="text" placeholder="PSEUDO..." class="input-field">
-        <button class="login-btn">CONNEXION</button>
+        <div class="divloginbutton">      
+          <button class="login-btn">CONNEXION</button>
+        </div>  
       </div>
     </main>
   
@@ -36,4 +36,4 @@
       <div class="footer-text">JOUEZ - APPRENEZ - PROGRESSEZ</div>
     </footer>
   </body>
-  </html>
+  </html> -->

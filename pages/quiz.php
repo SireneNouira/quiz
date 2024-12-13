@@ -76,18 +76,22 @@ try {
     exit;
 }
 
-<<<<<<< HEAD
-?>
-<!DOCTYPE html>
-<html lang="fr">
 
+
+
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css">
+    <script  defer src="../js/script.js"></script>
+    <title>Document</title>
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -108,91 +112,34 @@ try {
                 <h1>TITRE QUIZ</h1>
                 <h2>1/2</h2>
             </div>
-            <!-- <div class="flexquestion">
-                <div class="question">
-                    <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, recusandae alias nulla repellat quae aut!</h3>
-                </div>
-
-                <div class="reponses">
-                    <h3>Lorem, ipsum.</h3>
-                    <h3>Lorem, ipsum.</h3>
-                    <h3>Lorem, ipsum.</h3>
-                </div> -->
+          
                 <div id="quiz-container">
 
 
-<h3 class="question" id="question-text" data-question-id="<?= $question[0]['id']; ?>">
+<h3 class="question" id="question-text" <?= $question[0]['id']; ?>>
     <?= htmlspecialchars($question[0]['question_text']); ?>
 </h3>
 
 <div id="answers">
-    <h3 class="reponses" data-answer-id="<?= $answer[0]['id']; ?>">
+    <h3 class="reponses" <?= $answer[0]['id']; ?>>
         <?= htmlspecialchars($answer[0]['answer_text']); ?>
     </h3>
 
 
-    <h3 class="reponses" data-answer-id="<?= $answer[1]['id']; ?>">
+    <h3 class="reponses"<?= $answer[1]['id']; ?>>
         <?= htmlspecialchars($answer[1]['answer_text']); ?>
     </h3>
 
 
-    <h3 class="reponses" data-answer-id="<?= $answer[2]['id']; ?>">
+    <h3 class="reponses" <?= $answer[2]['id']; ?>>
         <?= htmlspecialchars($answer[2]['answer_text']); ?>
     </h3>
 
-=======
-
-
-
-
-?>
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <script  defer src="../js/script.js"></script>
-    <title>Document</title>
-</head>
-<body>
-
-<div id="quiz-container">
-
-
-    <h3 id="question-text" <?= $question[0]['id']; ?>>
-        <?= htmlspecialchars($question[0]['question_text']); ?>
-    </h3>
-
-    <div id="answers">
-        <h3 class="answer" <?= $answer[0]['id']; ?>>
-            <?= htmlspecialchars($answer[0]['answer_text']); ?>
-        </h3>
-
-
-        <h3 class="answer"<?= $answer[1]['id']; ?>>
-            <?= htmlspecialchars($answer[1]['answer_text']); ?>
-        </h3>
-
-        
-        <h3 class="answer" <?= $answer[2]['id']; ?>>
-            <?= htmlspecialchars($answer[2]['answer_text']); ?>
-        </h3>
-
-
-
-    </div>
->>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f
 
 
 </div>
 
 
-<<<<<<< HEAD
 </div>
             </div>
             <a href="../choixquizz.php?id=<?= $userId ?>" class="login-btn3">REVENIR AU QUIZZ</a>
@@ -202,9 +149,8 @@ try {
     <footer>
         <div class="footer-text">JOUEZ - APPRENEZ - PROGRESSEZ</div>
     </footer>
-</body>
 
-=======
+
 <?php
 $questionData = [
     'id' => $question[0]['id'],
@@ -218,5 +164,4 @@ $questionData = [
 
 
 </body>
->>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f
 </html>

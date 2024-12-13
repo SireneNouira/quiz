@@ -58,61 +58,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jouer'])) {
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-<<<<<<< HEAD
-  <header>
-    <div class="logo">
-      <img src="css/quizzlogo.png" alt="logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#">A propos</a></li>
-        <li><a href="#">Scores</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <article class="input-field2">
-      <h1>HELLO <?= strtoupper($user['pseudo']); ?> </h1>
-      <div class="flex">
-
-        <?php
-        foreach ($quizzes as $quiz) { ?>
-          <div class="card">
-            <h2><?= $quiz['title']; ?></h2>
-            <img src="./img/iconquizfinal.png" alt="logo-musqiue">
-            <p><?= $quiz['description']; ?></p>
-            <form method="POST">
-                <input type="hidden" name="quiz_id" value="<?= htmlspecialchars($quiz['id']); ?>">
-                <button class="login-btn2" type="submit" name="jouer">Jouer</button>
-            </form>
-          </div>
-        <?php
-        }
-        ?>
-
-      </div>
-      <a href="./logout.php" class="login-btn ">DECONNEXION</a>
-    </article>
-  </main>
-
-  <footer>
-    <div class="footer-text">JOUEZ - APPRENEZ - PROGRESSEZ</div>
-  </footer>
-</body>
-
-</html>
-=======
     <header>
       <div class="logo">
         <img src="css/quizzlogo.png" alt="logo">
@@ -129,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jouer'])) {
     <main>
 
     <article class="input-field2">
-    <h1>HELLO <?= $user['pseudo'];?> </h1>
+    <h1>HELLO <?= strtoupper($user['pseudo']); ?> </h1>
 
 
 <div class="flex">
@@ -142,7 +94,7 @@ foreach ($quizzes as $quiz) {?>
 <p><?= $quiz['description'];?></p>
 <form method="POST">
                 <input type="hidden" name="quiz_id" value="<?= htmlspecialchars($quiz['id']); ?>">
-                <button type="submit" name="jouer">Jouer</button>
+                <button type="submit"  class="login-btn2" name="jouer">Jouer</button>
             </form>
   </div>
   <?php
@@ -152,9 +104,7 @@ foreach ($quizzes as $quiz) {?>
 </div>
 
 
-<form action="" method="post">
-  <input type="button" value="DECONNEXION"  class="login-btn">
-</form>
+<a href="./logout.php" class="login-btn ">DECONNEXION</a>
 </article>
 
 
@@ -165,4 +115,3 @@ foreach ($quizzes as $quiz) {?>
     </footer>
   </body>
   </html>
->>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f

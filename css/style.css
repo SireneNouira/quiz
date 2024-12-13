@@ -1,43 +1,49 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
 body {
+<<<<<<< HEAD
   font-family: Arial, sans-serif;
   background-color: #333333;
   color: #fff;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+=======
+font-family: Arial, sans-serif;
+background-color: #333333;
+color: #fff;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+>>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #333333;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px;
+background-color: #333333;
 }
 
 .logo img {
-  width: 50px;
-  height: auto;
+width: 50px;
+height: auto;
 }
 
 nav ul {
-  list-style: none;
-  display: flex;
+list-style: none;
+display: flex;
 }
 
 nav ul li {
-  margin: 0 15px;
+margin: 0 15px;
 }
 
 nav ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
+text-decoration: none;
+color: #fff;
+font-size: 16px;
 }
 a {
   text-decoration: none;
@@ -45,10 +51,15 @@ a {
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(90vh - 80px);
+display: flex;
+justify-content: center;
+align-items: center;
+height: calc(90vh - 80px);
+}
+
+p{
+font-size: 10px;
+
 }
 
 p {
@@ -56,6 +67,7 @@ p {
 }
 
 .login-container {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
 }
@@ -85,19 +97,30 @@ background-color: #fff;
 border-radius: 10px;
 padding: 10px;
 font-size: 16px;
+=======
+display: flex;
+flex-direction: column;
+
+}
+.flex{
+display: flex;
+flex-wrap: wrap;
+gap: 20%;
+>>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f
 }
 
 .logo-container {
-  justify-content: center;
-  margin-bottom: 20px;
+justify-content: center;
+margin-bottom: 20px;
 }
 
 .logomain {
-  width: 400px;
-  height: auto;
+width: 400px;
+height: auto;
 }
 
 .input-field {
+<<<<<<< HEAD
   text-align: center;
   padding: 12px;
   font-size: 18px;
@@ -153,23 +176,80 @@ font-size: 16px;
   width: 50%;
 }
 .divloginbutton {
+=======
+text-align: center;
+padding: 12px;
+font-size: 18px;
+margin: 10px 0;
+width: 400px;
+border-radius: 40px;
+}
+
+.input-field2 {
+>>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 15vh;
+    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+    margin: 10px 0;
+    width: 400px;
+    border-radius: 40px; 
 }
 
+<<<<<<< HEAD
+=======
+.card{
+width: 40%;
+height: 300px;
+text-align: center;
+background-color: #fff;
+color: #333333;
+padding: 15px;
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 10px
+}
+
+.card img {
+width: 50%;
+}
+.divloginbutton {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+>>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f
 .login-btn {
-  background-color: #ff9051;
-  color: #fff;
-  border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 40px;
-  width: 270px;
-  margin-top: 10px;
+background-color: #ff9051;
+color: #fff;
+border: none;
+padding: 12px 20px;
+font-size: 16px;
+cursor: pointer;
+border-radius: 40px;
+width: 270px;
+margin-top: 10px;
 }
 
+.login-btn2 {
+background-color: #9672FF;
+color: #fff;
+border: none;
+padding: 12px 20px;
+font-size: 16px;
+cursor: pointer;
+border-radius: 40px;
+width: 100px;
+margin-top: 10px;
+}
+
+<<<<<<< HEAD
 .login-btn3 {
   background-color: #ff9051;
   color: #fff;
@@ -196,22 +276,26 @@ font-size: 16px;
 
 .login-btn:hover,.login-btn3:hover   {
   background-color: #ff7e34;
+=======
+.login-btn:hover {
+background-color: #ff7e34;
+>>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f
 }
 .login-btn2:hover   {
   background-color: #7142ff;
 }
 
 footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #333333;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  color: #fff;
-  font-weight: bold;
+text-align: center;
+padding: 10px;
+background-color: #333333;
+position: fixed;
+width: 100%;
+bottom: 0;
+color: #fff;
+font-weight: bold;
 }
 
 footer .footer-text {
-  font-size: 14px;
+font-size: 14px;
 }

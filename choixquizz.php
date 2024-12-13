@@ -67,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jouer'])) {
 </head>
 
 <body>
+<<<<<<< HEAD
   <header>
     <div class="logo">
       <img src="css/quizzlogo.png" alt="logo">
@@ -111,3 +112,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jouer'])) {
 </body>
 
 </html>
+=======
+    <header>
+      <div class="logo">
+        <img src="css/quizzlogo.png" alt="logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">A propos</a></li>
+          <li><a href="#">Scores</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+
+    <article class="input-field2">
+    <h1>HELLO <?= $user['pseudo'];?> </h1>
+
+
+<div class="flex">
+
+<?php
+foreach ($quizzes as $quiz) {?>
+  <div class="card">
+<img src="./img/iconquizfinal.png" alt="logo-musqiue">
+<h2><?= $quiz['title'];?></h2>
+<p><?= $quiz['description'];?></p>
+<form method="POST">
+                <input type="hidden" name="quiz_id" value="<?= htmlspecialchars($quiz['id']); ?>">
+                <button type="submit" name="jouer">Jouer</button>
+            </form>
+  </div>
+  <?php
+}
+  ?>
+
+</div>
+
+
+<form action="" method="post">
+  <input type="button" value="DECONNEXION"  class="login-btn">
+</form>
+</article>
+
+
+    </main>
+  
+    <footer>
+      <div class="footer-text">JOUEZ - APPRENEZ - PROGRESSEZ</div>
+    </footer>
+  </body>
+  </html>
+>>>>>>> 88409cb0926ed6ac95f6e8d4525601e570141c9f

@@ -51,14 +51,14 @@ try {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer'])) {
     $selectedAnswerId = $_POST['answer'];
 
-
+    
     $sql = "SELECT is_correct FROM answer WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':id' => $selectedAnswerId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($result && $result['is_correct'] == 1) {
-        $_SESSION['score']++;
+        $_SESSION['score']++; 
     }
 
     $_SESSION['current_question']++;
@@ -68,13 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer'])) {
 $currentIndex = $_SESSION['current_question'];
 
 if ($currentIndex >= count($questions)) {
-    $finished = true;
+    $finished = true; 
     $_SESSION['quiz_finished'] = true;
 } else {
     $finished = false;
     $currentQuestion = $questions[$currentIndex];
 
-
+    
     $sql = "SELECT * FROM answer WHERE question_id = :id";
     try {
         $stmt = $pdo->prepare($sql);
@@ -94,7 +94,6 @@ if ($currentIndex >= count($questions)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Quiz</title>
-    <script src="../js/script.js"></script>
 </head>
 
 <body>
@@ -123,27 +122,20 @@ if ($currentIndex >= count($questions)) {
                     <h3>Quiz terminé ! Votre score : <?= $_SESSION['score']; ?> / <?= count($questions); ?></h3>
                     <a href="../choixquizz.php?id=<?= $userId ?>" class="login-btn3">Revenir au menu</a>
                 <?php else: ?>
-
+                    
                     <h3 class="question" id="question-text">
                         <?= htmlspecialchars($currentQuestion['question_text']); ?>
                     </h3>
 
-
+                    
                     <form method="post">
                         <div id="answers">
                             <?php foreach ($answers as $answer): ?>
-                                <button
-                                id="reponse"
-                                    class="reponses"
-                                    name="answer"
-                                    value="<?= $answer['id']; ?>"
-                                    data-correct="<?= $answer['is_correct']; ?>"
-                                   >
+                                <button class="reponses" name="answer" value="<?= $answer['id']; ?>">
                                     <?= htmlspecialchars($answer['answer_text']); ?>
                                 </button>
                             <?php endforeach; ?>
                         </div>
-                    </form>
                     </form>
                 <?php endif; ?>
             </div>

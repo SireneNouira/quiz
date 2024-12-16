@@ -2,6 +2,7 @@
 session_start();
 require '../utils/connect_db.php';
 
+
 if (!isset($_GET["user_id"]) || !isset($_GET["quiz_id"])) {
     die('ID manquant');
 }
@@ -50,6 +51,7 @@ try {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer'])) {
     $selectedAnswerId = $_POST['answer'];
+    
 
 
     $sql = "SELECT is_correct FROM answer WHERE id = :id";
@@ -61,11 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer'])) {
         $_SESSION['score']++;
     }
 
-    $_SESSION['current_question']++;
 }
 
 
+
+
+
 $currentIndex = $_SESSION['current_question'];
+
 
 if ($currentIndex >= count($questions)) {
     $finished = true;
@@ -84,6 +89,12 @@ if ($currentIndex >= count($questions)) {
         die("Erreur lors de la récupération des réponses : " . $error->getMessage());
     }
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['suivant'])) {
+
+    $_SESSION['current_question']++;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -92,9 +103,9 @@ if ($currentIndex >= count($questions)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style1.css">
     <title>Quiz</title>
-    <script src="../js/script.js"></script>
+    <script defer src="../js/script1.js"></script>
 </head>
 
 <body>
@@ -115,7 +126,14 @@ if ($currentIndex >= count($questions)) {
         <article class="input-field3">
             <div>
                 <h1><?= htmlspecialchars($quiz['title']); ?></h1>
-                <h2>Question <?= $currentIndex + 1; ?>/<?= count($questions); ?></h2>
+                <?php
+                if ($currentIndex < count($questions)) { ?>
+
+                    <h2>Question <?= $currentIndex + 1; ?>/<?= count($questions); ?></h2>
+                <?php
+                }
+                ?>
+
             </div>
 
             <div id="quiz-container">
@@ -128,26 +146,29 @@ if ($currentIndex >= count($questions)) {
                         <?= htmlspecialchars($currentQuestion['question_text']); ?>
                     </h3>
 
-
-                    <form method="post">
+                    <form method="post" action="">
                         <div id="answers">
                             <?php foreach ($answers as $answer): ?>
-                                <button
-                                id="reponse"
+                                <input
+
                                     class="reponses"
+                                    type="radio"
                                     name="answer"
                                     value="<?= $answer['id']; ?>"
-                                    data-correct="<?= $answer['is_correct']; ?>"
-                                   >
-                                    <?= htmlspecialchars($answer['answer_text']); ?>
-                                </button>
+                                    data-correct="<?= $answer['is_correct']; ?>">
+                                <?= htmlspecialchars($answer['answer_text']); ?>
+                                </input>
+
                             <?php endforeach; ?>
                         </div>
-                    </form>
+
+                        <button id="suivant-btn" class="suivant-btn-off" type="submit" name="suivant">Suivant</button>
+
                     </form>
                 <?php endif; ?>
             </div>
         </article>
+
     </main>
 
     <footer>

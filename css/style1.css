@@ -72,18 +72,18 @@ p {
   gap: 20%;
   justify-content: center;
 }
-
 .reponses{
-display: flex;
-width: 100%;
-margin-top: 4vh;
-justify-content: space-between;
-color: #333333;
-background-color: #fff;
-border-radius: 10px;
-padding: 10px;
-font-size: 16px;
-}
+  display: flex;
+  width: 100%;
+  margin-top: 4vh;
+  justify-content: space-between;
+  color: #333333;
+  
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  }
+ 
 
 h3 {
   color: #333333;
@@ -207,6 +207,13 @@ font-size: 16px;
   background-color: #7142ff;
 }
 
+
+.suivant-btn-off{
+  display: none;
+}
+.suivant-btn-on{
+  display: flex;
+}
 footer {
   text-align: center;
   padding: 10px;
@@ -224,10 +231,15 @@ footer .footer-text {
 
 .correct {
   background-color: #13CCCC;
-  color: #fff;
+  color: #00ff95;
+  border: 3px solid rgb(0, 250, 83);
+  
+
 }
+
 
 .incorrect {
   background-color: #7142ff;
   color: #fff;
+  border: 3px solid rgb(250, 0, 0);
 }

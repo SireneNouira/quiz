@@ -78,6 +78,11 @@ display: flex;
 width: 100%;
 margin-top: 4vh;
 justify-content: space-between;
+color: #333333;
+background-color: #fff;
+border-radius: 10px;
+padding: 10px;
+font-size: 16px;
 }
 
 h3 {
@@ -215,4 +220,14 @@ footer {
 
 footer .footer-text {
   font-size: 14px;
+}
+
+.correct {
+  background-color: #13CCCC;
+  color: #fff;
+}
+
+.incorrect {
+  background-color: #7142ff;
+  color: #fff;
 }

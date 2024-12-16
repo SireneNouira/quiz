@@ -53,14 +53,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer'])) {
     $selectedAnswerId = $_POST['answer'];
     
 
-
+    
     $sql = "SELECT is_correct FROM answer WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':id' => $selectedAnswerId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($result && $result['is_correct'] == 1) {
-        $_SESSION['score']++;
+        $_SESSION['score']++; 
     }
 
 }
@@ -73,13 +73,13 @@ $currentIndex = $_SESSION['current_question'];
 
 
 if ($currentIndex >= count($questions)) {
-    $finished = true;
+    $finished = true; 
     $_SESSION['quiz_finished'] = true;
 } else {
     $finished = false;
     $currentQuestion = $questions[$currentIndex];
 
-
+    
     $sql = "SELECT * FROM answer WHERE question_id = :id";
     try {
         $stmt = $pdo->prepare($sql);
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['suivant'])) {
                     <h3>Quiz terminé ! Votre score : <?= $_SESSION['score']; ?> / <?= count($questions); ?></h3>
                     <a href="../choixquizz.php?id=<?= $userId ?>" class="login-btn3">Revenir au menu</a>
                 <?php else: ?>
-
+                    
                     <h3 class="question" id="question-text">
                         <?= htmlspecialchars($currentQuestion['question_text']); ?>
                     </h3>
